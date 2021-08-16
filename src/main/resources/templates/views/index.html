@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro Produtos</title>
+    <link rel="stylesheet" href="style/index/index.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="style/materialize/css/materialize.min.css" media="screen,projection"/>
+</head>
+<body>
+
+<nav>
+    <div class="nav-wrapper deep-purple darken-1">
+        <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Cadastro Produtos</a>
+        <ul class="right hide-on-med-and-down" style="margin-top:-10px">
+            <li><a style="color: black" href="#"><i class="material-icons">exit_to_app</i>Sair</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="left blue-grey lighten-5">
+        <h5>Menu</h5>
+        <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
+        <ul id="myMenu">
+            <li><a href="/listProdutos">Produtos</a></li>
+            <li><a href="/listCategorias">Categorias</a></li>
+            <li><a href="/listOperadores">Operadores</a></li>
+            <li><a href="#">Permissões Usuários</a></li>
+        </ul>
+    </div>
+
+    <div class="right" style="background-color:#ddd;">
+        <h2>Cadastrar produtos</h2>
+        <p>Cadastrando seus produtos em nosso sistema, você poderá controlar o estoque,
+        <p>gerenciar os preços de cada produto em diferentes lojas, além de ter os dados</p>
+        <p>necessários para emissão de notas que serão preenchidos automaticamente,</p>
+        <p>facilitando os processos da venda.</p>
+    </div>
+</div>
+
+<script>
+    function myFunction() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("mySearch");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myMenu");
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="style/materialize/js/materialize.min.js"></script>
+</body>
+</html>

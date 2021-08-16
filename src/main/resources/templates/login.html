@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro Produtos</title>
+    <link rel="stylesheet" href="style/login.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper fadeInDown">
+        <div id="formContent">
+
+            <div th:if="${param.error}">
+                <div class="alert alert-danger">Usuário e/ou inválidos!</div>
+            </div>
+
+            <div th:if="${param.logout}">
+                <div class="alert alert-info">Até logo!</div>
+            </div>
+
+            <div class="fadeIn first">
+                <img src="https://image.flaticon.com/icons/png/128/23/23171.png"
+                     style="width: 70px; height: 70"
+                     id="icon" alt="User Icon" />
+            </div>
+
+            <!-- Login Form -->
+            <form action="/authenticate" method="post">
+                <input type="text" id="login" class="form-control" name="username" placeholder="login">
+                <input type="password" id="password" class="form-control" name="password" placeholder="password">
+                <input type="submit" class="fadeIn fourth" value="Log In">
+
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            </form>
+        </div>
+</div>
+</body>
+</html>

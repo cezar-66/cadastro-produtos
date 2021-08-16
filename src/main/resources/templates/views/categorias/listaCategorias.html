@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Categorias</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="style/materialize/css/materialize.min.css" media="screen,projection"/>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-wrapper deep-purple darken-1">
+        <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Categorias Cadastradas</a>
+        <ul class="right hide-on-med-and-down" style="margin-top:-10px">
+            <li><a style="color: black" href="/"><i class="material-icons">navigate_before</i>Voltar</a></li>
+        </ul>
+    </div>
+</nav>
+    <div class="container">
+        <table id="myTable">
+            <thead>
+            <tr>
+                <th>Código</th>
+                <th>Categoria</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="categoria : ${categorias}">
+                <td><span th:text="${categoria.codigo}"></span></td>
+                <td><span th:text="${categoria.nome}"></span></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="col-md-12 center text-center">
+            <span class="left" id="total_reg"></span>
+            <ul class="pagination pager right" id="myPager"></ul>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="style/js/pagination.js"></script>
+</body>
+</html>
