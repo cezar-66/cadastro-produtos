@@ -14,9 +14,11 @@
 
 <nav>
     <div class="nav-wrapper deep-purple darken-1">
-        <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Cadastro Produtos</a>
-        <ul class="right hide-on-med-and-down" style="margin-top:-10px">
-            <li><a style="color: black" href="#"><i class="material-icons">exit_to_app</i>Sair</a></li>
+        <a id="title" href="#!" class="brand-logo"><i class="material-icons">cloud_done</i>Cadastro Produtos</a>
+        <ul class="right">
+            <li><a style="font-size: 19px; margin-top: -10px" class="dropdown-trigger" href="/authenticate?logout" data-target="dropdown1">Sair
+                <i style="margin-top: -14px; margin-left: -5px" class="material-icons right">exit_to_app</i></a>
+            </li>
         </ul>
     </div>
 </nav>
@@ -26,9 +28,9 @@
         <h5>Menu</h5>
         <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
         <ul id="myMenu">
-            <li><a href="/listProdutos">Produtos</a></li>
+            <li><a href="/listAllProdutos">Produtos</a></li>
             <li><a href="/listCategorias">Categorias</a></li>
-            <li><a href="/listOperadores">Operadores</a></li>
+            <li><a href="/listUsuarios">Usuários</a></li>
             <li><a href="#">Permissões Usuários</a></li>
         </ul>
     </div>

@@ -1,44 +1,56 @@
-create table usuarios(
-    codigo serial primary key,
-    nome   varchar(150) not null,
-    cpf    varchar(14)  not null unique,
-    username  varchar(120) not null unique,
-    password text not null
+create table usuarios
+(
+    codigo   serial primary key,
+    nome     varchar(150) not null,
+    cpf      varchar(14)  not null unique,
+    username varchar(120) not null unique,
+    password text         not null
 );
 
-create table roles(
-    codigo   serial primary key,
+create table roles
+(
+    codigo    serial primary key,
     nome_role varchar(100) not null
 );
 
-create table usuarios_roles(
+create table usuarios_roles
+(
     codigo_usuario integer not null,
-    FOREIGN KEY (codigo_usuario) REFERENCES usuarios(codigo),
-    codigo_role integer not null,
+    FOREIGN KEY (codigo_usuario) REFERENCES usuarios (codigo),
+    codigo_role    integer not null,
     FOREIGN KEY (codigo_role) REFERENCES roles (codigo)
 );
 
-create table categorias(
+create table categorias
+(
     codigo serial primary key,
     nome   varchar(40) not null
 );
 
-create table produtos(
+create table produtos
+(
     codigo           serial primary key,
     nome             varchar(100) not null,
     descricao        varchar(100) not null,
+    fabricante       varchar(100),
     codigo_categoria Integer      not null,
     FOREIGN KEY (codigo_categoria) REFERENCES categorias (codigo)
 );
 
 
 --Roles
-insert into roles(codigo, nome_role) values (1, 'ROLE_ADMIN');
-insert into roles(codigo, nome_role) values (2, 'ROLE_USER');
-insert into roles(codigo, nome_role) values (3, 'ROLE_CADASTRAR_CATEGORIA');
-insert into roles(codigo, nome_role) values (4, 'ROLE_VISUALIZAR_CATEGORIAS_CADASTRADAS');
-insert into roles(codigo, nome_role) values (5, 'ROLE_CADASTRAR_PRODUTO');
-insert into roles(codigo, nome_role) values (6, 'ROLE_VISUALIZAR_PRODUTOS_CADASTRADOS');
+insert into roles(codigo, nome_role)
+values (1, 'ROLE_ADMIN');
+insert into roles(codigo, nome_role)
+values (2, 'ROLE_USER');
+insert into roles(codigo, nome_role)
+values (3, 'ROLE_CADASTRAR_CATEGORIA');
+insert into roles(codigo, nome_role)
+values (4, 'ROLE_VISUALIZAR_CATEGORIAS_CADASTRADAS');
+insert into roles(codigo, nome_role)
+values (5, 'ROLE_CADASTRAR_PRODUTO');
+insert into roles(codigo, nome_role)
+values (6, 'ROLE_VISUALIZAR_PRODUTOS_CADASTRADOS');
 
 
 --Usuario
@@ -50,16 +62,24 @@ values ('user', '111.111.11-111', 'user', '$2a$10$hzXXzANJ8pE9WIYfExGh6OJVuoqkHK
 
 -- Permissoes
 --Usuario Root possui permissoes a todas as roles
-insert into usuarios_roles(codigo_usuario, codigo_role) values (1, 1);
-insert into usuarios_roles(codigo_usuario, codigo_role) values (1, 2);
-insert into usuarios_roles(codigo_usuario, codigo_role) values (1, 3);
-insert into usuarios_roles(codigo_usuario, codigo_role) values (1, 4);
-insert into usuarios_roles(codigo_usuario, codigo_role) values (1, 5);
-insert into usuarios_roles(codigo_usuario, codigo_role) values (1, 6);
+insert into usuarios_roles(codigo_usuario, codigo_role)
+values (1, 1);
+insert into usuarios_roles(codigo_usuario, codigo_role)
+values (1, 2);
+insert into usuarios_roles(codigo_usuario, codigo_role)
+values (1, 3);
+insert into usuarios_roles(codigo_usuario, codigo_role)
+values (1, 4);
+insert into usuarios_roles(codigo_usuario, codigo_role)
+values (1, 5);
+insert into usuarios_roles(codigo_usuario, codigo_role)
+values (1, 6);
 
 --Usuario "user" possui permissoes apenas para visualizar produtos e categorias cadastrado
-insert into usuarios_roles(codigo_usuario, codigo_role) values (1, 4);
-insert into usuarios_roles(codigo_usuario, codigo_role) values (1, 6);
+insert into usuarios_roles(codigo_usuario, codigo_role)
+values (1, 4);
+insert into usuarios_roles(codigo_usuario, codigo_role)
+values (1, 6);
 
 
 --Categoria

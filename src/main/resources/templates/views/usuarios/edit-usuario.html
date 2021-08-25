@@ -88,11 +88,11 @@
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
                                 <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                                <div class="mt-3" th:each="operador : ${operador}">
-                                    <p class="text-secondary mb-1">Código: <span th:text="${operador.codigo}"></span></p>
-                                    <p class="text-secondary mb-1">Nome: <span th:text="${operador.nome}"></span></p>
-                                    <p class="text-secondary mb-1">CPF: <span th:text="${operador.cpf}"></span></p>
-                                    <p class="text-muted font-size-sm">Login: <span th:text="${operador.login}"></span></p>
+                                <div class="mt-3" th:each="usuario : ${usuario}">
+                                    <p class="text-secondary mb-1">Código: <span th:text="${usuario.codigo}"></span></p>
+                                    <p class="text-secondary mb-1">Nome: <span th:text="${usuario.nome}"></span></p>
+                                    <p class="text-secondary mb-1">CPF: <span th:text="${usuario.cpf}"></span></p>
+                                    <p class="text-muted font-size-sm">Login: <span th:text="${usuario.login}"></span></p>
                                 </div>
                             </div>
                         </div>

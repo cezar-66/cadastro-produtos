@@ -18,6 +18,9 @@ public class Produto {
     @Column(name = "descricao", nullable = false, length = 100)
     private String descricao;
 
+    @Column(name = "fabricante", length = 100)
+    private String fabricante;
+
     public Produto(Integer codigo, String nome, String descricao, Categoria categoria) {
         this.codigo = codigo;
         this.categoria = categoria;
@@ -57,5 +60,13 @@ public class Produto {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public String getFabricante() {
+        return fabricante;
+    }
+
+    public void setFabricante(String fabricante) {
+        this.fabricante = fabricante;
     }
 }
