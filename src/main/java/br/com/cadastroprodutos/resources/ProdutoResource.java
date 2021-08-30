@@ -62,4 +62,11 @@ public class ProdutoResource {
     }
 
 
+    @RequestMapping(value = "/deleteProduto")
+    public String deleteProduto(@RequestParam Integer codigo,
+                                RedirectAttributes attributes){
+        return service.deleteProduto(codigo, attributes);
+    }
+
+
 }

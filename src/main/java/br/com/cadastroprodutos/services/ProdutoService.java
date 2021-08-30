@@ -93,4 +93,11 @@ public class ProdutoService {
         return "redirect:/listAllProdutos";
 
     }
+
+    public String deleteProduto(Integer codigo,
+                                RedirectAttributes attributes){
+        pr.deleteById(codigo);
+        attributes.addFlashAttribute("success", "Produto deletado com sucesso!");
+        return "redirect:/listAllProdutos";
+    }
 }

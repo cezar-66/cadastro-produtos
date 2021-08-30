@@ -79,7 +79,8 @@
                 </a>
                 <ul>
                     <li><button><a class="btn-floating green"><i class="material-icons">done</i></a></button></li>
-                    <li><a class="btn-floating red"><i class="material-icons">delete_forever</i></a></li>
+                    <li><a th:href="${(#mvc.url('PR#deleteProduto').arg(0, produto.codigo)).build()}"
+                           class="btn-floating red"><i class="material-icons">delete_forever</i></a></li>
                     <li><a class="btn-floating red"><i class="material-icons">clear</i></a></li>
                 </ul>
             </div>
