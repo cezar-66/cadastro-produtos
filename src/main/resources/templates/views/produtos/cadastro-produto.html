@@ -50,7 +50,7 @@
                             <option disabled selected value="">Selecione a Categoria</option>
                             <option th:each="categorias : ${categorias}"
                                     th:value="${categorias.codigo}"
-                                    th:text="${categorias.nome}"></option>
+                                    th:text="${categorias.nome.toUpperCase()}"></option>
                         </select>
                         <label>Categoria</label>
                     </div>

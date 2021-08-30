@@ -1,10 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Cadastro de Produto</title>
+
+
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="style/materialize/css/materialize.min.css" media="screen,projection"/>
+    <!-- Pagination -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('select').formSelect();
+            $('.fixed-action-btn').floatingActionButton();
+        });
+    </script>
 </head>
 <body>
+<nav>
+    <div class="nav-wrapper deep-purple darken-1">
+        <a href="/" class="brand-logo"><i class="material-icons">cloud</i>Cadastro de Produtos</a>
+        <ul class="right hide-on-med-and-down" style="margin-top:-10px">
+            <li><a style="color: black" href="/listAllProdutos"><i class="material-icons">navigate_before</i>Voltar</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container" style="margin-top: 40px">
+    <h5>Cadastrar Novo Produto</h5>
+    <div class="row">
+        <form th:each="produto : ${produto}"
+              th:action="@{/updateProduto/{codigo}(codigo=${produto.codigo})}"
+              th:object="${produto}"
+              method="post" class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input th:value="${produto.nome}" id="nome" name="nome" type="text" class="validate">
+                    <label for="nome">Nome Produto</label>
+                </div>
+                <div class="input-field col s6">
+                    <select id="categoria" name="categoria">
+                        <option th:value="${produto.categoria.codigo}"
+                                th:text="${produto.categoria.nome.toUpperCase()}" selected>
 
+                        </option>
+                        <option th:each="categorias : ${categorias}"
+                                th:value="${categorias.codigo}"
+                                th:text="${categorias.nome.toUpperCase()}"></option>
+                    </select>
+                    <label>Categoria</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s8">
+                    <input  th:value="${produto.descricao}" id="descricao" name="descricao" type="text" class="validate">
+                    <label for="descricao">Descrição</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s8">
+                    <input th:value="${produto.fabricante}" id="fabricante" name="fabricante" type="text" class="validate">
+                    <label for="fabricante">Fabricante</label>
+                </div>
+            </div>
+            <div class="fixed-action-btn">
+                <a class="btn-floating btn-large red">
+                    <i class="large material-icons">mode_edit</i>
+                </a>
+                <ul>
+                    <li><button><a class="btn-floating green"><i class="material-icons">done</i></a></button></li>
+                    <li><a class="btn-floating red"><i class="material-icons">delete_forever</i></a></li>
+                    <li><a class="btn-floating red"><i class="material-icons">clear</i></a></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+</div>
 </body>
 </html>

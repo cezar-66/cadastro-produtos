@@ -21,30 +21,45 @@ public class ProdutoResource {
     private ProdutoService service;
 
     @RequestMapping(method = RequestMethod.GET, path = "/listAllProdutos")
-    public ModelAndView listAllProdutos(){
+    public ModelAndView listAllProdutos() {
         return service.getAllProdutos();
     }
 
-    @RequestMapping(path = "/autocompleteProdutos", method = RequestMethod.GET,  produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/autocompleteProdutos", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public List<Produto> autoCompleteOperador(@RequestParam String name){
+    public List<Produto> autoCompleteOperador(@RequestParam String name) {
         return service.autoCompleteProdutos(name);
     }
 
-    @RequestMapping(value="/formEditProduto/{codigoProduto}", method=RequestMethod.GET)
-    public ModelAndView formEditProduto(@RequestParam Integer codigo){
+    @RequestMapping(path = "/GetProdutosAutoComplete", method = RequestMethod.GET)
+    public ModelAndView GetAutoComplete(@RequestParam String name){
+        return service.GetAutoComplete(name);
+    }
+
+    @RequestMapping(value = "/formEditProduto/{codigoProduto}", method = RequestMethod.GET)
+    public ModelAndView formEditProduto(@RequestParam Integer codigo) {
         return service.formEditProduto(codigo);
     }
 
     @RequestMapping(value = "/formCadastroProduto", method = RequestMethod.GET)
-    public ModelAndView formCadastroProduto(){
+    public ModelAndView formCadastroProduto() {
         return service.formCadastroProduto();
     }
 
     @RequestMapping(value = "/formCadastroProduto", method = RequestMethod.POST)
     public String formCadastroProduto(@Valid Produto produto,
                                       BindingResult result,
-                                      RedirectAttributes attributes){
+                                      RedirectAttributes attributes) {
         return service.formCadastroProduto(produto, result, attributes);
     }
+
+    @RequestMapping(value = "/updateProduto/{codigo}", method = RequestMethod.POST)
+    public String updateProduto(@PathVariable("codigo") Integer codigo,
+                                @Valid Produto produto,
+                                BindingResult result,
+                                RedirectAttributes attributes) {
+        return service.updateProduto(codigo, produto, result, attributes);
+    }
+
+
 }

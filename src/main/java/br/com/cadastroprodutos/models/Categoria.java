@@ -20,6 +20,8 @@ public class Categoria {
 
     public Categoria() {}
 
+
+
     public Integer getCodigo() {
         return codigo;
     }

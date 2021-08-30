@@ -8,4 +8,5 @@ import java.util.List;
 public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
 
     List<Produto> findByNomeIsContaining(String nome);
+    List<Produto> findAllByOrderByCodigoAsc();
 }

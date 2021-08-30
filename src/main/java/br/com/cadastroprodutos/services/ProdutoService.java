@@ -24,7 +24,7 @@ public class ProdutoService {
 
     public ModelAndView getAllProdutos(){
         ModelAndView mv = new ModelAndView("views/produtos/index");
-        List<Produto> produtos = pr.findAll();
+        List<Produto> produtos = pr.findAllByOrderByCodigoAsc();
         mv.addObject("produtos", produtos);
         return mv;
     }
@@ -37,10 +37,19 @@ public class ProdutoService {
         return null;
     }
 
+    public ModelAndView GetAutoComplete(String nome){
+        ModelAndView mv = new ModelAndView("views/produtos/index");
+        List<Produto> results = pr.findByNomeIsContaining(nome);
+        mv.addObject("produtos", results);
+        return  mv;
+    }
+
     public ModelAndView formEditProduto(Integer codigo){
         Produto produto = pr.getById(codigo);
+        List<Categoria> categorias = categoriaRepository.findAllByOrderByNome();
         ModelAndView mv = new ModelAndView("views/produtos/edit-produto");
         mv.addObject("produto", produto);
+        mv.addObject("categorias", categorias);
         return mv;
     }
     public ModelAndView formCadastroProduto(){
@@ -62,5 +71,26 @@ public class ProdutoService {
         pr.save(produto);
         attributes.addFlashAttribute("success", "Produto cadastrado com sucesso!");
         return "redirect:/listAllProdutos";
+    }
+
+    public String updateProduto(Integer codigo,
+                                Produto produto,
+                                BindingResult result,
+                                RedirectAttributes attributes) {
+
+        Produto prodEdit = pr.getById(codigo);
+        prodEdit.setNome(produto.getNome());
+        prodEdit.setCategoria(produto.getCategoria());
+        prodEdit.setDescricao(produto.getDescricao());
+        prodEdit.setFabricante(produto.getFabricante());
+
+        if(result.hasErrors()){
+            attributes.addFlashAttribute("error", "Verifique os campos!");
+            return "redirect:/listAllProdutos";
+        }
+        pr.save(prodEdit);
+        attributes.addFlashAttribute("success", "Produto alterado com sucesso!");
+        return "redirect:/listAllProdutos";
+
     }
 }
