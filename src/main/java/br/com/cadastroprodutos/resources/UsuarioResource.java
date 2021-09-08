@@ -21,6 +21,11 @@ public class UsuarioResource {
         return service.getAllOperadores();
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/cadastroUsuario")
+    public String cadastroUsuario(){
+        return "views/usuarios/cadastro-usuario";
+    }
+
     @RequestMapping(path = "/autocompleteUsuarios", method = RequestMethod.GET,  produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public List<Usuario> autoCompleteOperador(@RequestParam String name){
