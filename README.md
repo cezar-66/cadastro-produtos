@@ -4,7 +4,7 @@ Cadastro de Produtos
 O projeto cadastro de produtos consiste em uma aplicação java utilizando os seguintes frameworks:
 Spring boot, Spring Security, JPA, Hibernate, Postgres, thymeleaf, bootstrap, jquery e materialize.
 
-O projeto conta com as seguintes funcionalidade já implementadas:
+O projeto conta com as seguintes funcionalidade já implementadas\n:
 .Autenticação de usuário
 .Crud completo + autocomplete PRODUTOS
 .Crud completo + autocomplete Categorias
