@@ -7,7 +7,7 @@ Spring boot, Spring Security, JPA, Hibernate, Postgres, thymeleaf, bootstrap, jq
 
 <b>O projeto conta com as seguintes funcionalidade já implementadas:<br/></b>
 . Autenticação de usuário<br/>
-. Crud completo + autocomplete PRODUTOS<br/>
+. Crud completo + autocomplete Produtos<br/>
 . Crud completo + autocomplete Categorias<br/>
 
 
